@@ -18,7 +18,7 @@ def load_pdf_files():
         
         logger.info(f"Loading PDF files from directory: {DATA_PATH}")
         
-        loader = DirectoryLoader(path=DATA_PATH, glob="**/*.pdf", loader_cls=PyPDFLoader)
+        loader = DirectoryLoader(path=DATA_PATH, glob="*.pdf", loader_cls=PyPDFLoader)
         
         documents = loader.load()
         if not documents:

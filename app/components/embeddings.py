@@ -11,7 +11,7 @@ def get_embeddings():
         logger.info("Initializing HuggingFace embeddings...")
         embeddings = HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2",
-            model_kwargs={"use_auth_token": HF_TOKEN}
+            # model_kwargs={"use_auth_token": HF_TOKEN}
         )
         logger.info("HuggingFace embeddings initialized successfully.")
         return embeddings
