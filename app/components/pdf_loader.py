@@ -30,3 +30,21 @@ def load_pdf_files():
         logger.error(f"Error loading PDF files: {e}")
         raise CustomException("Failed to load PDF files.", e)
         return []
+
+def chunk_documents(documents):
+    try:
+        logger.info("Chunking documents...")
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=CHUNK_SIZE,
+            chunk_overlap=CHUNK_OVERLAP,
+            length_function=len
+        )
+        
+        text_chunks = text_splitter.split_documents(documents)
+        logger.info(f"Created {len(text_chunks)} text chunks from documents.")
+        return text_chunks
+    except Exception as e:
+        logger.error(f"Error chunking documents: {e}")
+        raise CustomException("Failed to chunk documents.", e)
+        return []
+        
